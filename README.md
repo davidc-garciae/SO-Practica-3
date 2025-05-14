@@ -86,9 +86,8 @@ diff C_small.txt C_out_secuencial.txt
 
 ### Requisitos
 
-Go 1.18 o superior instalado.
-
-Sistema operativo Linux o WSL (compatible con Go).
+- Go 1.18 o superior instalado.
+- Sistema operativo Linux o WSL (compatible con Go).
 
 ### Compilación
 
