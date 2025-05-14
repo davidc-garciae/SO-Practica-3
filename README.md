@@ -291,7 +291,8 @@ plt.savefig('output_go.png')
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/4ff61b95-16d1-48d2-8c8a-e9b42cb5ed08)
+![image](https://github.com/user-attachments/assets/71f4ba85-9efc-499e-b0bf-09eff3ada1e4)
+
 
 ### Comparación de archivos de salida
 
