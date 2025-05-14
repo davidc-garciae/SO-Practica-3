@@ -12,7 +12,7 @@
 
 ## Descripción del proyecto
 
-Este proyecto implementa la multiplicación de matrices en C, tanto de forma secuencial como paralela usando procesos e IPC (memoria compartida). Permite comparar el rendimiento de ambas aproximaciones y analizar el speedup obtenido al paralelizar la tarea.
+Este proyecto implementa la multiplicación de matrices en C y en Go, tanto de forma secuencial como paralela usando procesos e IPC (memoria compartida). Permite comparar el rendimiento de ambas aproximaciones y analizar el speedup obtenido al paralelizar la tarea.
 
 ---
 
@@ -24,6 +24,7 @@ P3/
 ├── B_small.txt           # Matriz B de ejemplo (entrada)
 ├── C_small.txt           # Matriz C de referencia (salida esperada)
 ├── matrix_mul.c          # Código fuente en C (secuencial y paralelo)
+├── matrix_mul.go          # Código fuente en C (secuencial y paralelo)
 ├── informeC++.md / README.md# Informe y documentación del proyecto
 ├── output.png            # Gráfica de speedup
 ├── [otros archivos de matrices grandes, si los generas]
@@ -31,7 +32,7 @@ P3/
 
 ---
 
-## Instrucciones de compilación y ejecución
+## Instrucciones de compilación y ejecución del codigo  en C 
 
 ### Requisitos
 
@@ -81,7 +82,44 @@ diff C_small.txt C_out_secuencial.txt
 
 ---
 
-# Informe
+## Instrucciones de compilación y ejecución del codigo en Go
+
+Requisitos
+
+Go 1.18 o superior instalado.
+
+Sistema operativo Linux o WSL (compatible con Go).
+
+Compilación
+
+```sh
+go build -o matrix_mul matrix_mul.go
+```
+
+Ejecución
+
+ejemplo usando las matrices (A.txt, B.txt) y 4 goroutines, (puede cambiar las matrices por otras alojadas en el repositorio y tambien variar el numero de goroutines)
+
+```sh
+./matrix_mul -p 4 -a A.txt -b B.txt
+```
+
+esto generará:
+
+C_out_secuencial.txt
+C_out_paralelo.txt
+
+
+Puedes comparar los resultados con el archivo de referencia usando:
+
+```sh
+diff C.txt C_out_secuencial.txt
+```
+```sh
+diff C.txt C_out_paralelo.txt
+```
+
+# Informe Codigo en C
 
 ---
 
@@ -183,7 +221,109 @@ Esto evidencia que la multiplicación es correcta y que ambas implementaciones p
 
 ---
 
-## 5. Referencias
+# Informe Codigo en Go
+
+## 1. Introducción
+
+En esta práctica se implementó la multiplicación de matrices de gran tamaño en Go, con dos aproximaciones:
+
+Secuencial: ejecución en un solo hilo.
+
+Paralela: división de filas entre varias goroutines y uso de canales para comunicación (IPC).
+
+El objetivo es comparar el rendimiento de ambas versiones y analizar el speedup obtenido al aumentar el número de goroutines.
+
+## 2. Descripción de la solución
+
+### 2.1. Lectura y escritura de matrices
+
+Lectura línea a línea con bufio.Scanner.
+
+Conversión a float64 y almacenamiento en [][]float64.
+
+Escritura con bufio.Writer, formateando números.
+
+### 2.2. Implementación secuencial
+
+Tres bucles anidados en multiplySequential.
+
+Medición de tiempo con time.Now() y time.Since().
+
+### 2.3. Implementación paralela
+
+Canal jobs para índices de fila.
+
+Varias goroutines worker consumen de jobs y envían resultados por results.
+
+Ensamble de filas en la matriz resultado.
+
+### 2.4. Elección de IPC
+
+Se usan canales (chan) de Go porque son seguros, sencillos y la forma idiomática de coordinación entre goroutines.
+
+## 3. Resultados y análisis de rendimiento
+
+Para las matrices (A.txt, B.txt), los tiempos fueron los siguientes:
+
+| Goroutines | Tiempo secuencial (s) | Tiempo paralelo (s) | Speedup |
+|------------|-----------------------|----------------------|---------|
+| 1          | 0.000009              | 0.000212             | 0.04×   |
+| 2          | 0.000014              | 0.000127             | 0.11×   |
+| 4          | 0.000010              | 0.000171             | 0.06×   |
+| 8          | 0.000008              | 0.002193             | 0.00×   |
+
+Nota: Al usar matrices pequeñas el overhead de crear y sincronizar goroutines domina el tiempo, por eso el speedup es <1.
+
+Generamos una grafica en python con los valores:
+
+```python
+import matplotlib.pyplot as plt
+
+# Datos reales obtenidos
+processes = [1, 2, 4, 8]
+speedup   = [0.04, 0.11, 0.06, 0.00]
+
+plt.plot(processes, speedup, marker='o')
+plt.xlabel('Número de goroutines')
+plt.ylabel('Speedup')
+plt.title('Speedup vs Número de goroutines (A pequeña)')
+plt.grid(True)
+plt.savefig('output_go.png')
+plt.show()
+```
+
+![image](https://github.com/user-attachments/assets/4ff61b95-16d1-48d2-8c8a-e9b42cb5ed08)
+
+### Comparación de archivos de salida
+
+Para verificar la corrección de la implementación, se compararon los archivos de salida generados por las versiones secuencial y paralela con el archivo de referencia (`C_small.txt`) usando el comando `diff`:
+
+```sh
+diff C.txt C_out_secuencial.txt
+diff C_small.txt C_out_paralelo.txt
+```
+
+En ambos casos, se observó que los resultados dieron iguales en la mayor parte de los decimales, con alguna variacion en algun decimal final:
+
+**Ejemplo de salida:**
+
+```
+1,12c1,12
+< 4.693413018545468 5.561372870702934 ...
+---
+> 4.693413018545468 5.561372870702935 ...
+```
+
+### Conclusiones
+-La implementación devuelve las  cifras con gran exactitud, incluso iguales decimales en muchos casos, por lo que el algoritmo está correctamente codificado.
+
+-Con matrices pequeñas, el coste de lanzar y coordinar goroutines y canales supera la propia multiplicación, resultando en speedup menores que 1. Para notar ventaja, es esencial trabajar con matrices de gran dimensión.
+
+-El modelo de concurrencia de Go (goroutines + canales) es muy simple y seguro, pero cada sincronización tiene un coste. Ajustar el número de goroutines al tamaño de la máquina (núcleos disponibles) y al volumen de datos es clave para maximizar el rendimiento.
+
+-En problemas de gran escala (matrices grandes), separar las filas en varias goroutines puede reducir significativamente el tiempo total de cómputo, mostrando la utilidad del paralelismo en Go.
+
+##  Referencias
 
 - OSTEP: Processes API Chapter.
 - Man pages de fork, shmget, shmat.
