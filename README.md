@@ -84,19 +84,19 @@ diff C_small.txt C_out_secuencial.txt
 
 ## Instrucciones de compilación y ejecución del codigo en Go
 
-Requisitos
+### Requisitos
 
 Go 1.18 o superior instalado.
 
 Sistema operativo Linux o WSL (compatible con Go).
 
-Compilación
+### Compilación
 
 ```sh
 go build -o matrix_mul matrix_mul.go
 ```
 
-Ejecución
+### Ejecución
 
 ejemplo usando las matrices (A.txt, B.txt) y 4 goroutines, (puede cambiar las matrices por otras alojadas en el repositorio y tambien variar el numero de goroutines)
 
@@ -110,7 +110,7 @@ C_out_secuencial.txt
 C_out_paralelo.txt
 
 
-Puedes comparar los resultados con el archivo de referencia usando:
+### Puedes comparar los resultados con el archivo de referencia usando:
 
 ```sh
 diff C.txt C_out_secuencial.txt
