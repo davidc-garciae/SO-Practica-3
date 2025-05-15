@@ -31,7 +31,7 @@ P3/
 ```
 
 ```
-P3/
+P4/
 ├── A.txt                  # Matriz A de ejemplo (entrada)
 ├── A_big.txt              # Matriz A de ejemplo (entrada, grande)
 ├── A_copia.txt            # Matriz A de ejemplo (entrada, copia)
