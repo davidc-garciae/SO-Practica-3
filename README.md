@@ -30,6 +30,27 @@ P3/
 ├── [otros archivos de matrices grandes, si los generas]
 ```
 
+```
+P3/
+├── A.txt                  # Matriz A de ejemplo (entrada)
+├── A_big.txt              # Matriz A de ejemplo (entrada, grande)
+├── A_copia.txt            # Matriz A de ejemplo (entrada, copia)
+├── A_small.txt            # Matriz A de ejemplo (entrada, pequeña)
+├── B.txt                  # Matriz B de ejemplo (entrada)
+├── B_big.txt              # Matriz B de ejemplo (entrada, grande)
+├── B_small.txt            # Matriz B de ejemplo (entrada, pequeña)
+├── C.txt                  # Matriz C de ejemplo (referencia)
+├── C_big.txt              # Matriz C de ejemplo (referencia, grande)
+├── C_small.txt            # Matriz C de ejemplo (referencia, pequeña)
+├── C_out.txt              # Resultado de la multiplicación (general)
+├── C_out_paralelo.txt     # Resultado de la multiplicación (paralelo)
+├── C_out_secuencial.txt   # Resultado de la multiplicación (secuencial)
+├── matrix_mul.c           # Código fuente en C (secuencial y paralelo)
+├── matrix_mul.go          # Código fuente en Go (secuencial y paralelo)
+├── informeC++.md / README.md  # Informe y documentación del proyecto
+├── output.png             # Gráfica de speedup
+```
+
 ---
 
 ## Instrucciones de compilación y ejecución del codigo  en C 
