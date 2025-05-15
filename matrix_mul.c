@@ -1,7 +1,7 @@
 // matrix_mul.c
 // Práctica 3 SO: Multiplicación de matrices (secuencial y paralela)
 // Lectura y escritura de matrices desde archivos de texto
-// Integrantes: [Agrega aquí los nombres y IDs]
+// Integrantes: Cristian David Tamayo Espinosa / David Camilo García Echavarría
 
 #include <stdio.h>
 #include <stdlib.h>
