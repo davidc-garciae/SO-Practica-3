@@ -18,17 +18,7 @@ Este proyecto implementa la multiplicación de matrices en C y en Go, tanto de f
 
 ## Estructura de carpetas y archivos
 
-```
-P3/
-├── A_small.txt           # Matriz A de ejemplo (entrada)
-├── B_small.txt           # Matriz B de ejemplo (entrada)
-├── C_small.txt           # Matriz C de referencia (salida esperada)
-├── matrix_mul.c          # Código fuente en C (secuencial y paralelo)
-├── matrix_mul.go          # Código fuente en C (secuencial y paralelo)
-├── informeC++.md / README.md# Informe y documentación del proyecto
-├── output.png            # Gráfica de speedup
-├── [otros archivos de matrices grandes, si los generas]
-```
+
 
 ```
 P4/
