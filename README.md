@@ -88,8 +88,8 @@ diff C_small.txt C_out_secuencial.txt
 
 1. Ejecuta el programa con diferentes números de procesos y matrices de distintos tamaños.
 2. Anota los tiempos de ejecución y calcula el speedup.
-3. Usa el código Python incluido en este README para graficar el speedup (requiere matplotlib).
-4. Inserta la imagen generada (`output.png`) en el README.
+3. Usar el código Python incluido en este README para graficar el speedup (requiere matplotlib).
+
 
 ---
 
@@ -166,7 +166,7 @@ Se eligió memoria compartida porque permite que todos los procesos accedan y es
 
 ### Tabla de tiempos y speedup
 
-Ejecuta tu programa con diferentes números de procesos y anota los resultados. Por ejemplo:
+Se Ejecuta el programa con diferentes números de procesos y se anota los resultados. Por ejemplo se obtuvo:
 
 | N° Procesos | Tiempo Secuencial (s) | Tiempo Paralelo (s) | Speedup |
 | ----------- | --------------------- | ------------------- | ------- |
@@ -175,17 +175,17 @@ Ejecuta tu programa con diferentes números de procesos y anota los resultados. 
 | 4           | 0.000008              | 0.000448            | 0.02    |
 | 8           | 0.000013              | 0.000669            | 0.02    |
 
-> **Nota:** Con matrices pequeñas, el paralelismo es más lento por la sobrecarga de crear procesos. Prueba con matrices más grandes para ver el speedup real.
+> **Nota:** Con matrices pequeñas, el paralelismo es más lento por la sobrecarga de crear procesos. se puede probar con matrices más grandes para ver el speedup real.
 
 ### Gráfica de speedup
 
-Puedes usar el siguiente código en Python (matplotlib) para graficar el speedup:
+el siguiente código en Python (matplotlib) se usa para graficar el speedup:
 
 ```python
 import matplotlib.pyplot as plt
 
 procesos = [1, 2, 4, 8]
-speedup = [0.05, 0.03, 0.02, 0.02]  # Reemplaza con tus datos reales
+speedup = [0.05, 0.03, 0.02, 0.02] 
 
 plt.plot(procesos, speedup, marker='o')
 plt.xlabel('Número de procesos')
@@ -204,8 +204,8 @@ A continuación se muestra la gráfica obtenida:
 Para verificar la corrección de la implementación, se compararon los archivos de salida generados por las versiones secuencial y paralela con el archivo de referencia (`C_small.txt`) usando el comando `diff`:
 
 ```sh
-$ diff C_small.txt C_out_secuencial.txt
-$ diff C_small.txt C_out_paralelo.txt
+diff C_small.txt C_out_secuencial.txt
+diff C_small.txt C_out_paralelo.txt
 ```
 
 En ambos casos, las diferencias observadas corresponden únicamente a la precisión de los decimales, lo cual es esperable debido al formato de impresión, pero los resultados numéricos son equivalentes.
@@ -263,7 +263,7 @@ Medición de tiempo con time.Now() y time.Since().
 
 Canal jobs para índices de fila.
 
-Varias goroutines worker consumen de jobs y envían resultados por results.
+Varias goroutines worker consumen tareas del canal jobs y envían los resultados a través del canal results.
 
 Ensamble de filas en la matriz resultado.
 
