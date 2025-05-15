@@ -1,8 +1,8 @@
 // matrix_mul.go
 // Práctica de multiplicación de matrices en Go
 // Implementa dos versiones: secuencial y paralela (usando goroutines y canales como mecanismo de IPC)
-// Autores: Cristian David Tamayo Espinosa
-// 					David Camilo García Echavarría
+// Autores: Cristian David Tamayo Espinosa / David Camilo García Echavarría
+ 					
 
 package main
 
