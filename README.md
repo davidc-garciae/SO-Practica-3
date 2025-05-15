@@ -37,7 +37,7 @@ P3/
 ├── C_out_secuencial.txt   # Resultado de la multiplicación (secuencial)
 ├── matrix_mul.c           # Código fuente en C (secuencial y paralelo)
 ├── matrix_mul.go          # Código fuente en Go (secuencial y paralelo)
-├── informeC++.md / README.md  # Informe y documentación del proyecto
+├── informeC++.md / informeGo.md README.md  # Informes y documentación del proyecto
 ├── output.png             # Gráfica de speedup
 ```
 
