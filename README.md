@@ -86,8 +86,8 @@ diff C_small.txt C_out_secuencial.txt
 
 ## Cómo reproducir los experimentos y la gráfica
 
-1. Ejecuta el programa con diferentes números de procesos y matrices de distintos tamaños.
-2. Anota los tiempos de ejecución y calcula el speedup.
+1. Ejecutar el programa con diferentes números de procesos y matrices de distintos tamaños.
+2. Anotar los tiempos de ejecución y calcula el speedup.
 3. Usar el código Python incluido en este README para graficar el speedup (requiere matplotlib).
 
 
