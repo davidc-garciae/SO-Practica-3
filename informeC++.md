@@ -2,8 +2,8 @@
 
 **Curso:** Sistemas Operativos  
 **Práctica:** #3 - Multiplicación de matrices usando procesos  
-**Integrantes:** [Agrega aquí los nombres y códigos]  
-**Fecha:** [Fecha de entrega]
+**Integrantes:** Cristian David Tamayo Espinosa / David Camilo García Echavarría
+**Fecha:** 14 mayo del 2025
 
 ---
 
