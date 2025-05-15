@@ -21,7 +21,7 @@ Este proyecto implementa la multiplicación de matrices en C y en Go, tanto de f
 
 
 ```
-P4/
+P3/
 ├── A.txt                  # Matriz A de ejemplo (entrada)
 ├── A_big.txt              # Matriz A de ejemplo (entrada, grande)
 ├── A_copia.txt            # Matriz A de ejemplo (entrada, copia)
